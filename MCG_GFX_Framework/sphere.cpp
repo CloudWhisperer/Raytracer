@@ -1,5 +1,6 @@
 #include "sphere.h"
 
+
 float sphere::intersection(ray _ray, glm::vec3 _vec3)
 {
     _vec3.x / 255;
@@ -23,17 +24,31 @@ glm::vec3 sphere::closepoint(ray _ray, glm::vec3 _3dquerypoint)
     return x;
 }
 
-bool sphere::hitormiss(ray _ray, glm::vec3 _spherecentre, float _radius)
+sphereclass sphere::hitormiss(ray _ray, glm::vec3 _spherecentre, float _radius)
 {
-    glm::vec3 x = _spherecentre - (closepoint(_ray, _spherecentre));
+    sphereclass classthing;
 
-    if (glm::distance(_spherecentre , x) >= _radius)
-    {
-        return true;
-    }
+    glm::vec3 delta = _spherecentre - _ray.origin;
+    float deltadot = glm::dot(delta, _ray.dir);
 
-    else
-    {
-        return false;
-    }
+    if (deltadot < 0)
+        classthing.returnresult = false;
+    return classthing;
+
+    const float closestpoint = glm::length(delta - (deltadot * _ray.dir));
+
+    if (closestpoint > _radius)
+        classthing.returnresult = false;
+    return classthing;
+
+
+    const float x = glm::sqrt(_radius * _radius - closestpoint * closestpoint);
+    glm::vec3 hitposition = _ray.origin + (deltadot - x) * _ray.dir;
+
+    glm::vec3 hitnormal = glm::normalize(hitposition - _spherecentre);
+
+    classthing.returnresult = true;
+    classthing.vecresult = hitposition;
+
+    return classthing;
 }

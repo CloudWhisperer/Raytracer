@@ -1,2 +1,50 @@
-﻿  Main.cpp
-  MCG_GFX_Framework.vcxproj -> C:\Users\User\Downloads\pooleigh\Debug\MCG_GFX_Framework.exe
+﻿  Camera.cpp
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Camera.cpp(8,37): error C3927: '->': trailing return type is not allowed after a non-function declarator
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Camera.cpp(8,37): error C3484: syntax error: expected '->' before the return type
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Camera.cpp(8,38): error C3613: missing return type after '->' ('int' assumed)
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Camera.cpp(8,39): error C2082: redefinition of formal parameter '_pixelpos'
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Camera.cpp(8,38): error C2146: syntax error: missing ';' before identifier 'x'
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Camera.cpp(8,38): error C2065: 'x': undeclared identifier
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Camera.cpp(10,27): error C2955: 'std::map': use of class template requires template argument list
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\map(73): message : see declaration of 'std::map'
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Camera.cpp(10,50): error C2065: 'pixelpos': undeclared identifier
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Camera.cpp(11,34): error C2065: 'mscreenresolution': undeclared identifier
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Camera.cpp(10,17): error C2737: 'xnormal': const object must be initialized
+  Main.cpp
+  MCG_GFX_Lib.cpp
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(88,63): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(88,53): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(88,43): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(98,63): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(98,53): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(98,43): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Raytracer.cpp
+  sphere.cpp
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\sphere.cpp(6,13): warning C4552: '/': result of expression not used
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\sphere.cpp(7,13): warning C4552: '/': result of expression not used
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\sphere.cpp(8,13): warning C4552: '/': result of expression not used
+  Generating Code...
