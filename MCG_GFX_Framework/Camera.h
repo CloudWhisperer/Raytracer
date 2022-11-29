@@ -13,7 +13,7 @@ public:
 	//projection matrix
 	glm::mat4 lens{1.0f};
 
-	ray camray(glm::vec2, glm::vec2);
+	ray camray(glm::vec2);
 };
 
 

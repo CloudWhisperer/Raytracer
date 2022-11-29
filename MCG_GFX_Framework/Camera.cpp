@@ -1,14 +1,20 @@
 #include "Camera.h"
 #include <vector>
 #include <algorithm>
+#include <iostream>
 
-ray camera::camray(glm::vec2 _pixelpos,glm::vec2 _screenres)
+ray camera::camray(glm::vec2 _pixelpos)
 {
 
     // Task 1: convert _pixelpos from range (e.g. 0 -> 640) to range -1 to +1 in x and y
     // x and y must be in a continuous range from -1 to +1
 
     glm::distance(_pixelpos.x, _pixelpos.y);
+
+    glm::normalize(_pixelpos.x);
+    glm::normalize(_pixelpos.y);
+
+    //std::cout << glm::normalize(_pixelpos.x) << " " <<glm::normalize( _pixelpos.y) << std::endl;
 
 
     //tried to use std::generate
@@ -38,7 +44,8 @@ ray camera::camray(glm::vec2 _pixelpos,glm::vec2 _screenres)
     // Task 3: multiply both points by inverse proj matrix
 
 
-    //glm::inverse(camera::lens(nearpoint * farpoint));
+    //glm::inverse((nearpoint * farpoint)) * lens;
+    
 
 
     // Task 4: divide each point by its own w
@@ -48,12 +55,12 @@ ray camera::camray(glm::vec2 _pixelpos,glm::vec2 _screenres)
 
     // Task 5: multiply both points by the inverse view matrix
 
-
+    //glm::inverse((nearpoint * farpoint))* viewmatrix;
 
 
     // Task 6: construct ray
 
-
+    ray r;
 
 
     //const float xnormal = static_cast<float>(_pixelpos.x), 0.0f, static_cast<float>(_screenres.y), 1.0f, -1.0f;
