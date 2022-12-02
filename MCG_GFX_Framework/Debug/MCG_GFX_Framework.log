@@ -1,13 +1,3 @@
 ﻿  Main.cpp
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(55,14): warning C4101: 'tracer': unreferenced local variable
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(119,21): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(120,21): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(84,14): warning C4101: 'tracer': unreferenced local variable
   MCG_GFX_Framework.vcxproj -> C:\Users\User\Downloads\pooleigh\Raytracer\Debug\MCG_GFX_Framework.exe

@@ -9,22 +9,9 @@ ray camera::camray(glm::vec2 _pixelpos)
     // Task 1: convert _pixelpos from range (e.g. 0 -> 640) to range -1 to +1 in x and y
     // x and y must be in a continuous range from -1 to +1
 
-    glm::distance(_pixelpos.x, _pixelpos.y);
-
-    glm::normalize(_pixelpos.x);
-    glm::normalize(_pixelpos.y);
-
-    //std::cout << glm::normalize(_pixelpos.x) << " " <<glm::normalize( _pixelpos.y) << std::endl;
-
-
-    //tried to use std::generate
-    //float e = 1.0f;
-    //std::vector<float> b(e);
-    //std::generate_e(b.begin(), e, increment());
-
-
-    //tried to use glm length to determine the diffrence between them to calucate where the pixel is
-    //glm::length(pixelx, pixely);
+    //creates the range
+    _pixelpos.x / _pixelpos.x * 2 - 1;
+    _pixelpos.y / _pixelpos.y * 2 - 1; 
 
     // Task 2: construct a near point and a far point - these must be vec4
 

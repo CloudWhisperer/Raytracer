@@ -2,15 +2,46 @@
 #include <iostream>
 #include <cmath>
 #include <SDL/SDL.h>
+#include <vector>
 #include "MCG_GFX_Lib.h"
 #include "Camera.h"
 #include "Ray.h"
 #include "Raytracer.h"
 
-void drawcirclesmooth(int x, int y, float r, int colour);
+glm::vec3 sphere;
+float sphereradius;
+
+bool hit_sphere(glm::vec3 center, float radius, ray& r)
+{
+
+	glm::vec3 oc = r.origin - center;
+	float a = glm::dot(r.dir, r.dir);
+	float b = 2.0f * glm::dot(oc, r.dir);
+	float c = glm::dot(oc, oc) - radius * radius;
+	float discriminant = b * b - 4 * a * c;
+	return (discriminant > 0);
+
+	if (hit_sphere(sphere, sphereradius, r))
+	{
+		std::cout << "hit a sphere" << std::endl;
+	}
+}
+
+////glm::vec3 colour(const ray& r)
+//{
+//	if (hit_sphere(sphere, sphereradius, r))
+//	glm::vec3 unit_dir = r.dir;
+//	float t = 0.5 * r.dir.y + 1.0f;
+//	glm::vec3 u (1.0, 1.0, 1.0);
+//	return (1.0-t) * u + t * glm::vec3(0.5, 0.7, 1.0);
+//}
 
 int main(int argc, char* argv[])
 {
+	glm::vec3 sphere(0, 0, -1);
+	sphereradius = 0.5f;
+
+
 	// Variable for storing window dimensions
 	glm::ivec2 windowSize(640, 480);
 
@@ -41,7 +72,7 @@ int main(int argc, char* argv[])
 	// Do any other DrawPixel calls here
 	// ...
 
-
+	//hit_sphere((0,0,0), 3.14f,ray);
 
 	camera cam;
 
@@ -62,8 +93,6 @@ int main(int argc, char* argv[])
 
 	}
 
-
-
 	//std::cout << " Finished tracing" << std::endl;
 
 	// Displays drawing to screen and holds until user closes window
@@ -79,13 +108,10 @@ int main(int argc, char* argv[])
 	// This is our game loop
 	// It will run until the user presses 'escape' or closes the window
 	//while (MCG::ProcessFrame())
-	//{
-
-	for (float i = 100.0f; i > 0;)
 	{
-		drawcirclesmooth(300, 250, i, 1);
-		i -= 1;
+
 	}
+
 		return MCG::ShowAndHold();
 
 
@@ -102,22 +128,4 @@ int main(int argc, char* argv[])
 
 	//}
 
-}
-
-void drawcirclesmooth(int x, int y, float r, int colour)
-{
-	static const double PI = 3.1415926535;
-	double i, angle, x1, y1;
-	glm::vec3 pixelColour(1, 0, 0);
-
-	for (i = 0; i < 100; i += 0.001)
-	{
-		glm::ivec2 pixelPosition;
-		angle = i;
-		x1 = r * cos(angle * PI / 2) + x;
-		y1 = r * sin(angle * PI / 2) + y;
-		pixelPosition.x = x1;
-		pixelPosition.y = y1;
-		MCG::DrawPixel(pixelPosition, pixelColour);
-	}
 }
