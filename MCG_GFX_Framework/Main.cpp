@@ -7,25 +7,27 @@
 #include "Camera.h"
 #include "Ray.h"
 #include "Raytracer.h"
+#include "sphere.h"
 
-glm::vec3 sphere;
-float sphereradius;
 
-bool hit_sphere(glm::vec3 center, float radius, ray& r)
-{
+//glm::vec3 sphere;
+//float sphereradius;
 
-	glm::vec3 oc = r.origin - center;
-	float a = glm::dot(r.dir, r.dir);
-	float b = 2.0f * glm::dot(oc, r.dir);
-	float c = glm::dot(oc, oc) - radius * radius;
-	float discriminant = b * b - 4 * a * c;
-	return (discriminant > 0);
-
-	if (hit_sphere(sphere, sphereradius, r))
-	{
-		std::cout << "hit a sphere" << std::endl;
-	}
-}
+//bool hit_sphere(glm::vec3 center, float radius, ray& r)
+//{
+//
+//	glm::vec3 oc = r.origin - center;
+//	float a = glm::dot(r.dir, r.dir);
+//	float b = 2.0f * glm::dot(oc, r.dir);
+//	float c = glm::dot(oc, oc) - radius * radius;
+//	float discriminant = b * b - 4 * a * c;
+//	return (discriminant > 0);
+//
+//	if (hit_sphere(sphere, sphereradius, r))
+//	{
+//		std::cout << "hit a sphere" << std::endl;
+//	}
+//}
 
 ////glm::vec3 colour(const ray& r)
 //{
@@ -38,8 +40,8 @@ bool hit_sphere(glm::vec3 center, float radius, ray& r)
 
 int main(int argc, char* argv[])
 {
-	glm::vec3 sphere(0, 0, -1);
-	sphereradius = 0.5f;
+	//glm::vec3 sphere(0, 0, -1);
+	//sphereradius = 0.5f;
 
 
 	// Variable for storing window dimensions
@@ -76,24 +78,42 @@ int main(int argc, char* argv[])
 
 	camera cam;
 
+	Material spheremat;
+	sphere inviscircle = sphere(0.001, glm::vec3(0, 0, 0), spheremat);
+
+	
+
+
 
 	for (int y = 0; y < MCG::getwinsize().y; y++)
 	{
 		for (int x = 0; x < MCG::getwinsize().x; x++)
 		{
-			ray r = cam.camray(glm::vec2(y, x));
 
 			Raytracer tracer;
 
-			//MCG::DrawPixel(glm::vec2(x, y), tracer.returncol(r));
+			tracer.arr.push_back(inviscircle);
 
+			ray r = cam.camray(glm::vec2(x, y));
+			inviscircle.hitormiss(r,inviscircle.GetSphereCenter(), inviscircle.GetRadius());
+			//inviscircle.hitormiss(r, glm::vec3(0,0,0), 0.1);
+			if (inviscircle.sp_class.returnresult == true)
+			{
+				//std::cout << "Hit circle at " << y << "y " << x << "x " << std::endl;
+
+			}
+
+			MCG::DrawPixel(glm::vec2(x, y), tracer.returncol(r));
+
+			std::cout << r.origin.x << std::endl;
+			std::cout << r.origin.y << std::endl;
 			//std::cout << x << " x pos" << "  " << y << "y pos" << std::endl;
 
 		}
 
 	}
 
-	//std::cout << " Finished tracing" << std::endl;
+	std::cout << " Finished tracing" << std::endl;
 
 	// Displays drawing to screen and holds until user closes window
 	// You must call this after all your drawing calls

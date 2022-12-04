@@ -10,8 +10,13 @@ ray camera::camray(glm::vec2 _pixelpos)
     // x and y must be in a continuous range from -1 to +1
 
     //creates the range
-    _pixelpos.x / _pixelpos.x * 2 - 1;
-    _pixelpos.y / _pixelpos.y * 2 - 1; 
+    float pixelx = (_pixelpos.x / 640) * 2 - 1;
+    float pixely = (_pixelpos.y / 480) * 2 - 1;
+
+    //glm::vec2 ndcx = glm::normalize(_pixelpos)
+
+    //std::cout << pixelx << std::endl;
+    //std::cout << pixely << std::endl;
 
     // Task 2: construct a near point and a far point - these must be vec4
 
@@ -31,23 +36,32 @@ ray camera::camray(glm::vec2 _pixelpos)
     // Task 3: multiply both points by inverse proj matrix
 
 
-    //glm::inverse((nearpoint * farpoint)) * lens;
+    nearpoint = glm::inverse(_projMatrix)* nearpoint;
+    farpoint = glm::inverse(_projMatrix)* farpoint;
+
+    //_pixelpos.x = _pixelpos.x * glm::inverse(_projMatrix) * _pixelpos.x;
+    //_pixelpos.y * glm::inverse(_projMatrix);
     
 
 
     // Task 4: divide each point by its own w
 
-    nearpoint / nearpoint.w;
-    farpoint / farpoint.w;
+
+    nearpoint = nearpoint / nearpoint.w;
+    farpoint = farpoint / farpoint.w;
 
     // Task 5: multiply both points by the inverse view matrix
 
-    //glm::inverse((nearpoint * farpoint))* viewmatrix;
+    nearpoint = glm::inverse(_viewMatrix) * nearpoint;
+    farpoint = glm::inverse(_viewMatrix) * farpoint;
 
 
     // Task 6: construct ray
 
     ray r;
+    r.origin = glm::vec3(_pixelpos.x, _pixelpos.y, 0);
+
+    //r.dir = glm::vec3(nearpoint.)
 
 
     //const float xnormal = static_cast<float>(_pixelpos.x), 0.0f, static_cast<float>(_screenres.y), 1.0f, -1.0f;
@@ -58,5 +72,5 @@ ray camera::camray(glm::vec2 _pixelpos)
 
     //const float xnormal = map(static_cast<float>(pixelpos.x), 0.0f, static_cast<float>(mscreenresolution.y), 1.0f, -1.0f);
 
-    return ray();
+    return r;
 }

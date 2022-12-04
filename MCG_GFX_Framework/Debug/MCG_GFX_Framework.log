@@ -1,3 +1,5 @@
-﻿  Main.cpp
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(84,14): warning C4101: 'tracer': unreferenced local variable
+﻿  Camera.cpp
+  Main.cpp
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(82,66): warning C4305: 'argument': truncation from 'double' to 'float'
+  Generating Code...
   MCG_GFX_Framework.vcxproj -> C:\Users\User\Downloads\pooleigh\Raytracer\Debug\MCG_GFX_Framework.exe
