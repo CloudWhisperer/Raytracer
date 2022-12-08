@@ -81,8 +81,8 @@ int main(int argc, char* argv[])
 	Material spheremat;
 	sphere inviscircle = sphere(0.001, glm::vec3(0, 0, 0), spheremat);
 
-	
-
+	Raytracer tracer;
+	//tracer.arr.push_back(inviscircle);
 
 
 	for (int y = 0; y < MCG::getwinsize().y; y++)
@@ -90,11 +90,11 @@ int main(int argc, char* argv[])
 		for (int x = 0; x < MCG::getwinsize().x; x++)
 		{
 
-			Raytracer tracer;
-
-			tracer.arr.push_back(inviscircle);
-
 			ray r = cam.camray(glm::vec2(x, y));
+			MCG::DrawPixel(glm::vec2(x, y), tracer.returncol(r));
+
+
+			/*
 			inviscircle.hitormiss(r,inviscircle.GetSphereCenter(), inviscircle.GetRadius());
 			//inviscircle.hitormiss(r, glm::vec3(0,0,0), 0.1);
 			if (inviscircle.sp_class.returnresult == true)
@@ -102,11 +102,11 @@ int main(int argc, char* argv[])
 				//std::cout << "Hit circle at " << y << "y " << x << "x " << std::endl;
 
 			}
+			*/
 
-			MCG::DrawPixel(glm::vec2(x, y), tracer.returncol(r));
 
-			std::cout << r.origin.x << std::endl;
-			std::cout << r.origin.y << std::endl;
+			//std::cout << r.origin.x << std::endl;
+			//std::cout << r.origin.y << std::endl;
 			//std::cout << x << " x pos" << "  " << y << "y pos" << std::endl;
 
 		}

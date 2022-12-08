@@ -6,10 +6,15 @@
 
 class Raytracer
 {
-
-
-
 public:
+	Raytracer();
+
 	glm::vec3 returncol(ray _ray);
-	std::vector<sphere> arr;
+
+
+protected:
+	//std::vector<sphere> _objectList;
+
+	sphere _object;
+
 };

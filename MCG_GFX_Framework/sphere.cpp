@@ -28,7 +28,7 @@ Material::Material(glm::vec3 _diffuseColour, float _specularStrength)
 }
 
 
-
+/*
 float sphere::intersection(ray _ray, glm::vec3 _vec3)
 {
     _vec3.x / 255;
@@ -51,18 +51,33 @@ glm::vec3 sphere::closepoint(ray _ray, glm::vec3 _3dquerypoint)
 
     return x;
 }
+*/
 
-sphereclass sphere::hitormiss(ray _ray, glm::vec3 _spherecentre, float _radius)
+//go through this and look at last slide
+IntersectionResult sphere::IntersectTest(ray _ray)
 {
-    sphereclass classthing;
+    IntersectionResult testResult;
+    testResult.hit = false;
 
-    //p - x thing
-    glm::vec3 delta = _spherecentre - closepoint(_ray, _spherecentre);
+
+    //p - a thing
+    glm::vec3 delta = sphereCenter - _ray.origin;//- closepoint(_ray, _spherecentre);
 
 
     //float deltadot = glm::dot(delta, _ray.dir);
 
+    float d = glm::length(delta - glm::dot(delta,_ray.dir) * _ray.dir);
 
+    // main intersection test
+    if (d <= radius)
+    {
+        testResult.hit = true;
+    }
+
+    return testResult;
+
+
+    /*
     if (delta.x  <= radius && delta.y <= radius && delta.z <= radius)
     {
         sp_class.returnresult = true;
@@ -122,4 +137,5 @@ sphereclass sphere::hitormiss(ray _ray, glm::vec3 _spherecentre, float _radius)
 
 
     return sp_class;
+    */
 }

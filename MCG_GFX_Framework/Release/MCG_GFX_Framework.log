@@ -1,0 +1,41 @@
+﻿  Camera.cpp
+  Main.cpp
+D:\Raytracer\MCG_GFX_Framework\Main.cpp(82,66): warning C4305: 'argument': truncation from 'double' to 'float'
+  MCG_GFX_Lib.cpp
+D:\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(88,63): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(88,53): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(88,43): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(98,63): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(98,53): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(98,43): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Raytracer.cpp
+  sphere.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 103 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  MCG_GFX_Framework.vcxproj -> D:\Raytracer\Release\MCG_GFX_Framework.exe
