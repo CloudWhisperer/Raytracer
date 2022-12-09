@@ -53,6 +53,31 @@ glm::vec3 sphere::closepoint(ray _ray, glm::vec3 _3dquerypoint)
 }
 */
 
+glm::vec3 sphere::ShadePixel(ray _ray, glm::vec3 intersectionPoint)
+{
+
+    glm::vec3 Spherenormal = spherenormal(sphereCenter, intersectionPoint);
+
+    glm::vec3 lightdir = glm::normalize(lightpos);
+
+    float diff = glm::max(glm::dot(Spherenormal, lightdir), 0.0f);
+
+    //makes the colour of circle
+    glm::vec3 diffuse = diff * lightcol;
+
+    float ambientLightStrength = 0.1f;
+    glm::vec3 ambient = ambientLightStrength * lightcol;
+    glm::vec3 viewdir = -glm::normalize(intersectionPoint);
+    glm::vec3 reflectdir = glm::reflect(-lightdir, Spherenormal);
+    float spec = pow(glm::max(glm::dot(viewdir, reflectdir), 0.0f), 64);
+    glm::vec3 specular = spec * GetMaterial().specularStrength * lightcol;
+
+    //add all the shadings together
+    glm::vec3 result = (ambient + diffuse + specular) * GetMaterial().diffuseColour;
+
+    return result;
+}
+
 //go through this and look at last slide
 IntersectionResult sphere::IntersectTest(ray _ray)
 {
@@ -71,6 +96,7 @@ IntersectionResult sphere::IntersectTest(ray _ray)
     // main intersection test
     if (d <= radius)
     {
+        testResult.intersectionPoint = delta;
         testResult.hit = true;
     }
 
@@ -138,4 +164,11 @@ IntersectionResult sphere::IntersectTest(ray _ray)
 
     return sp_class;
     */
+}
+
+glm::vec3 sphere::spherenormal(glm::vec3 sphereCenter, glm::vec3 threedeesamplepoint)
+{
+    glm::vec3 normalvector = threedeesamplepoint - sphereCenter;
+    normalvector = glm::normalize(normalvector);
+    return normalvector;
 }

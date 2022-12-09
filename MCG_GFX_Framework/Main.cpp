@@ -93,6 +93,17 @@ int main(int argc, char* argv[])
 			ray r = cam.camray(glm::vec2(x, y));
 			MCG::DrawPixel(glm::vec2(x, y), tracer.returncol(r));
 
+			//if (inviscircle.IntersectTest(r).hit == true)
+			//{
+			//	MCG::DrawPixel(glm::vec2(x, y), inviscircle.ShadePixel(r, inviscircle.IntersectTest(r).intersectionPoint));
+			//}
+
+			//else
+			//{
+			//	MCG::DrawPixel(glm::vec2(x, y), glm::vec3(0, 0, 0));
+			//}
+
+
 
 			/*
 			inviscircle.hitormiss(r,inviscircle.GetSphereCenter(), inviscircle.GetRadius());
