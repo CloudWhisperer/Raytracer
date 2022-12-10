@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include "MCG_GFX_Lib.h"
 
 ray camera::camray(glm::vec2 _pixelpos)
 {
@@ -10,8 +11,8 @@ ray camera::camray(glm::vec2 _pixelpos)
     // x and y must be in a continuous range from -1 to +1
 
     //creates the range
-    float pixelx = ((float)_pixelpos.x / 640.0f) * 2.0f - 1.0f;
-    float pixely = ((float)_pixelpos.y / 480.0f) * 2.0f - 1.0f;
+    float pixelx = ((float)_pixelpos.x / MCG::getwinsize().x) * 2.0f - 1.0f;
+    float pixely = ((float)_pixelpos.y / MCG::getwinsize().y) * 2.0f - 1.0f;
 
     //glm::vec2 ndcx = glm::normalize(_pixelpos)
 

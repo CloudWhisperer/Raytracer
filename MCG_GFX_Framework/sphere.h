@@ -33,8 +33,8 @@ public:
 	float GetRadius() { return radius; }
 	glm::vec3 GetSphereCenter() { return sphereCenter; }
 	Material GetMaterial() { return material; }
-	glm::vec3 lightpos = glm::vec3 (5,-3,8);
-	glm::vec3 lightcol = glm::vec3(0.1);
+	glm::vec3 lightpos = glm::vec3 (40.0f,0.5,50);
+	glm::vec3 lightcol = glm::vec3(0.8,0.4,0.5);
 
 	glm::vec3 ShadePixel(ray _ray, glm::vec3 intersectionPoint);
 

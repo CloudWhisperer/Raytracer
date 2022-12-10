@@ -2,8 +2,8 @@
 
 Raytracer::Raytracer()
 {
-    _object.SetRadius(4.0f);
-    _object.SetPosition(glm::vec3(0, 0, -20.0f));
+    _object.SetRadius(0.5f);
+    _object.SetPosition(glm::vec3(0, 0, -2.0f));
 }
 
 glm::vec3 Raytracer::returncol(ray _ray)
