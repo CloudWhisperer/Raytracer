@@ -55,7 +55,7 @@ glm::vec3 sphere::closepoint(ray _ray, glm::vec3 _3dquerypoint)
 
 glm::vec3 sphere::ShadePixel(ray _ray, glm::vec3 intersectionPoint)
 {
-    Material mat(glm::vec3(0.5), 10.0f);
+    Material mat(glm::vec3(0.5), 3.5f);
 
     glm::vec3 Spherenormal = spherenormal(sphereCenter, intersectionPoint);
 
@@ -66,7 +66,7 @@ glm::vec3 sphere::ShadePixel(ray _ray, glm::vec3 intersectionPoint)
     //makes the colour of circle
     glm::vec3 diffuse = diff * lightcol;
 
-    float ambientLightStrength = 0.00000000001f;
+    float ambientLightStrength = 0.000000001f;
     glm::vec3 ambient = ambientLightStrength * lightcol;
     glm::vec3 viewdir = -glm::normalize(intersectionPoint);
     glm::vec3 reflectdir = glm::reflect(-lightdir, Spherenormal);

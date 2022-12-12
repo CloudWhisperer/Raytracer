@@ -9,10 +9,6 @@
 #include "Raytracer.h"
 #include "sphere.h"
 
-
-//glm::vec3 sphere;
-//float sphereradius;
-
 //bool hit_sphere(glm::vec3 center, float radius, ray& r)
 //{
 //
@@ -40,9 +36,6 @@
 
 int main(int argc, char* argv[])
 {
-	//glm::vec3 sphere(0, 0, -1);
-	//sphereradius = 0.5f;
-
 
 	// Variable for storing window dimensions
 	glm::ivec2 windowSize(640, 480);
@@ -59,6 +52,7 @@ int main(int argc, char* argv[])
 	// Sets every pixel to the same colour
 	// parameters are RGB, numbers are from 0 to 1
 	MCG::SetBackground(glm::vec3(0, 0, 0));
+
 
 	// Preparing a position to draw a pixel
 	glm::ivec2 pixelPosition = windowSize / 2;
@@ -77,6 +71,7 @@ int main(int argc, char* argv[])
 	//hit_sphere((0,0,0), 3.14f,ray);
 
 	camera cam;
+
 
 	Material spheremat;
 	sphere inviscircle = sphere(0.001, glm::vec3(0, 0, 0), spheremat);
@@ -122,28 +117,31 @@ int main(int argc, char* argv[])
 
 		}
 
-	}
-
-	std::cout << " Finished tracing" << std::endl;
-
-	// Displays drawing to screen and holds until user closes window
-	// You must call this after all your drawing calls
-	// Program will exit after this line
-	//return MCG::ShowAndHold();
-
-
-	// Advanced access - comment out the above DrawPixel and MCG::ShowAndHold lines, then uncomment the following:
-	// Variable to keep track of time
-	float timer = 0.0f;
-
-	// This is our game loop
-	// It will run until the user presses 'escape' or closes the window
-	//while (MCG::ProcessFrame())
-	{
+		std::cout << " Finished tracing" << std::endl;
 
 	}
 
+
+		// Displays drawing to screen and holds until user closes window
+		// You must call this after all your drawing calls
+		// Program will exit after this line
+		//return MCG::ShowAndHold();
+
+
+		// Advanced access - comment out the above DrawPixel and MCG::ShowAndHold lines, then uncomment the following:
+		// Variable to keep track of time
+		float timer = 0.0f;
+
+		// This is our game loop
+		// It will run until the user presses 'escape' or closes the window
+		//while (MCG::ProcessFrame())
+		//{
+
+		//}
+
+		//cam.cammovement();
 		return MCG::ShowAndHold();
+
 
 
 		//// Set every pixel to the same colour

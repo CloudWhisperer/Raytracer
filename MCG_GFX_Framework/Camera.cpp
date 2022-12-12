@@ -71,3 +71,39 @@ ray camera::camray(glm::vec2 _pixelpos)
 
     return r;
 }
+
+////void camera::cammovement()
+//{
+//    view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+//    SDL_Event event;
+//
+//    while (true) {
+//
+//        while (SDL_PollEvent(&event)) {  // poll until all events are handled!
+//            // decide what to do with this event.
+//            if (SDL_KEYDOWN == event.type)
+//            {
+//                if (SDLK_w == event.key.keysym.sym)
+//                {
+//                    std::cout << "presssss w" << std::endl;
+//                }
+//                if (SDLK_a == event.key.keysym.sym)
+//                {
+//                    std::cout << "presssss a" << std::endl;
+//                }
+//                if (SDLK_s == event.key.keysym.sym)
+//                {
+//                    std::cout << "pressssss s" << std::endl;
+//                }
+//                if (SDLK_d == event.key.keysym.sym)
+//                {
+//                    std::cout << "presssss d" << std::endl;
+//                }
+//            }
+//        }
+//
+//        // update game state, draw the current frame
+//    }
+//}
+
+
