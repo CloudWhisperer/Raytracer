@@ -1,8 +1,8 @@
-//include directories
 #include <iostream>
 #include <cmath>
 #include <SDL/SDL.h>
 #include <vector>
+#include <mutex>
 #include "MCG_GFX_Lib.h"
 #include "Camera.h"
 #include "Ray.h"
@@ -45,47 +45,69 @@ int main(int argc, char* argv[])
 	sphere inviscircle = sphere(0.001, glm::vec3(0, 0, 0), spheremat);
 	Raytracer tracer;
 
+	//Number of threads to use for ray tracing
+	const int numThreads = 6;
+
+	//initialize mutex
+	std::mutex mtx;
+
+	//vector of threads 
+	std::vector<std::thread> threads;
+
 	//main loop for the raytracer, checks every pixel
-	for (int y = 0; y < MCG::getwinsize().y; y++)
+	for (int i = 0; i < numThreads; i++)
 	{
-		for (int x = 0; x < MCG::getwinsize().x; x++)
-		{
-			ray r = cam.camray(glm::vec2(x, y));
-			MCG::DrawPixel(glm::vec2(x, y), tracer.returncol(r));
-		}
+
+		threads.push_back(std::thread([&tracer, &cam, &mtx]()
+			{
+				for (int y = 0; y < MCG::getwinsize().y; y++)
+				{
+					for (int x = 0; x < MCG::getwinsize().x; x++)
+					{
+
+						ray r = cam.camray(glm::vec2(x, y));
+						mtx.lock();
+
+						MCG::DrawPixel(glm::vec2(x, y), tracer.returncol(r));
+						mtx.unlock();
+
+					}
+				}
+			}));
 	}
+
+	//Joining threads
+	for (int i = 0; i < numThreads; i++)
+		threads[i].join();
 
 	std::cout << " Finished tracing" << std::endl;
 
+	// Displays drawing to screen and holds until user closes window
+	// You must call this after all your drawing calls
+	// Program will exit after this line
+	return MCG::ShowAndHold();
 
-		// Displays drawing to screen and holds until user closes window
-		// You must call this after all your drawing calls
-		// Program will exit after this line
-		return MCG::ShowAndHold();
 
+	// Advanced access - comment out the above DrawPixel and MCG::ShowAndHold lines, then uncomment the following:
+	// Variable to keep track of time
+	//float timer = 0.0f;
 
-		// Advanced access - comment out the above DrawPixel and MCG::ShowAndHold lines, then uncomment the following:
-		// Variable to keep track of time
-		//float timer = 0.0f;
-
-		// This is our game loop
-		// It will run until the user presses 'escape' or closes the window
-		//while (MCG::ProcessFrame())
-		//{
-
-		//}
-
-		//// Set every pixel to the same colour
-		//MCG::SetBackground(glm::vec3(0, 0, 0));
-
-		//// Change our pixel's X coordinate according to time
-		//pixelPosition.x = (windowSize.x / 2) + (int)(sin(timer) * 100.0f);
-		//// Update our time variable
-		//timer += 1.0f / 60.0f;
-
-		//// Draw the pixel to the screen
-		//MCG::DrawPixel(pixelPosition, pixelColour);
+	// This is our game loop
+	// It will run until the user presses 'escape' or closes the window
+	//while (MCG::ProcessFrame())
+	//{
 
 	//}
+
+	//// Set every pixel to the same colour
+	//MCG::SetBackground(glm::vec3(0, 0, 0));
+
+	//// Change our pixel's X coordinate according to time
+	//pixelPosition.x = (windowSize.x / 2) + (int)(sin(timer) * 100.0f);
+	//// Update our time variable
+	//timer += 1.0f / 60.0f;
+
+	//// Draw the pixel to the screen
+	//MCG::DrawPixel(pixelPosition, pixelColour);
 
 }
