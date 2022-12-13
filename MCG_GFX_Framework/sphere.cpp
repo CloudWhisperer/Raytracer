@@ -64,15 +64,12 @@ IntersectionResult sphere::IntersectTest(ray _ray)
     //glm::vec3 closepointx = _ray.origin + glm::dot((sphereCenter - _ray.origin), _ray.dir) * _ray.dir;
 
     //p - a thing
-    glm::vec3 delta = sphereCenter - _ray.origin;//- closepoint(_ray, _spherecentre);
-
-
-    //float deltadot = glm::dot(delta, _ray.dir);
+    glm::vec3 delta = sphereCenter - _ray.origin;
 
     //calculate d
     float d = glm::length(delta - glm::dot(delta,_ray.dir) * _ray.dir);
 
-    //calculate intersection point
+    //--calculate intersection point--
 
     //calculate x
     float intersectx = glm::sqrt((radius * radius) - (d * d));
@@ -169,7 +166,7 @@ glm::vec3 sphere::ShadePixel(ray _ray, glm::vec3 intersectpoint2)
     glm::vec3 diffuse = diff * lightcol;
 
     //calculating ambient and specular
-    float ambientLightStrength = 0.2f;
+    float ambientLightStrength = 0.1f;
     glm::vec3 ambient = ambientLightStrength * lightcol;
     glm::vec3 viewdir = -glm::normalize(intersectpoint2);
     glm::vec3 reflectdir = glm::normalize(glm::reflect(-lightdir, Spherenormal));
@@ -177,7 +174,7 @@ glm::vec3 sphere::ShadePixel(ray _ray, glm::vec3 intersectpoint2)
     glm::vec3 specular = spec * mat.specularStrength * lightcol;
 
     //add all the shadings together
-    glm::vec3 result = (ambient + diffuse + specular) * mat.diffuseColour;
+    glm::vec3 result = (ambient + diffuse + specular)* mat.diffuseColour;
 
     return result;
 }
