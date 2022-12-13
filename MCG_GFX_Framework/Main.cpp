@@ -116,10 +116,9 @@ int main(int argc, char* argv[])
 			//std::cout << x << " x pos" << "  " << y << "y pos" << std::endl;
 
 		}
-
-		std::cout << " Finished tracing" << std::endl;
-
 	}
+
+	std::cout << " Finished tracing" << std::endl;
 
 
 		// Displays drawing to screen and holds until user closes window
