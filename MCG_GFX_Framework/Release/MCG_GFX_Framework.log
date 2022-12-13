@@ -1,28 +1,7 @@
 ﻿  Main.cpp
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(18,65): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(29,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(30,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(43,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(44,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
+C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(45,66): warning C4305: 'argument': truncation from 'double' to 'float'
   Generating code
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(36): warning C4715: 'loop': not all control paths return a value
-  3 of 163 functions ( 1.8%) were compiled, the rest were copied from previous compilation.
+  1 of 112 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

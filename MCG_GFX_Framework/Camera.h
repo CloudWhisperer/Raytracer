@@ -9,7 +9,6 @@ class camera
 public:
 	//creates a function for the ray
 	ray camray(glm::vec2);
-	void nearfar(glm::vec2);
 
 protected:
 	//creates projection and view matrixes for the near and far planes

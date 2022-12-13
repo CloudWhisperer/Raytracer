@@ -1,11 +1,35 @@
 ﻿  Camera.cpp
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Ray.h(2,10): fatal  error C1083: Cannot open include file: 'GLM/glm.hpp': No such file or directory
   Main.cpp
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Main.cpp(4,10): fatal  error C1083: Cannot open include file: 'SDL/SDL.h': No such file or directory
   MCG_GFX_Lib.cpp
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(2,10): fatal  error C1083: Cannot open include file: 'SDL/SDL.h': No such file or directory
-  Raytracer.cpp
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\Ray.h(2,10): fatal  error C1083: Cannot open include file: 'GLM/glm.hpp': No such file or directory
-  sphere.cpp
-C:\Users\User\Downloads\pooleigh\Raytracer\MCG_GFX_Framework\sphere.h(2,10): fatal  error C1083: Cannot open include file: 'GLM/glm.hpp': No such file or directory
+C:\Users\User\Downloads\pooleigh\MCG_GFX_Framework\MCG_GFX_Lib.cpp(88,63): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\pooleigh\MCG_GFX_Framework\MCG_GFX_Lib.cpp(88,53): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\pooleigh\MCG_GFX_Framework\MCG_GFX_Lib.cpp(88,43): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\pooleigh\MCG_GFX_Framework\MCG_GFX_Lib.cpp(98,63): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\pooleigh\MCG_GFX_Framework\MCG_GFX_Lib.cpp(98,53): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\pooleigh\MCG_GFX_Framework\MCG_GFX_Lib.cpp(98,43): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
   Generating Code...
+LINK : fatal error LNK1104: cannot open file 'SDL2.obj'
