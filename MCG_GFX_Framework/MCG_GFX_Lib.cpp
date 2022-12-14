@@ -30,7 +30,7 @@ bool MCG::Init( glm::ivec2 windowSize )
 	// You can experiment with the numbers to see what they do
 	int winPosX = 100;
 	int winPosY = 100;
-	_window = SDL_CreateWindow( "MCG GFX Framework",  // The first parameter is the window title
+	_window = SDL_CreateWindow( "Shuaib's Multithreaded Raytracer",  // The first parameter is the window title
 		winPosX, winPosY,
 		_winSize.x, _winSize.y,
 		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE );

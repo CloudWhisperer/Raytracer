@@ -26,7 +26,7 @@ class sphere
 public:
 	//light position and colour values
 	glm::vec3 LightPosition = glm::vec3(25.0f, -20.0f, 15.0f);
-	glm::vec3 lightcol = glm::vec3(0.8, 0.4, 0.5);
+	glm::vec3 lightcol = glm::vec3(1, 0.0, 0.0);
 	Material material;
 
 	//all functions are here

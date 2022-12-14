@@ -79,7 +79,7 @@ glm::vec3 sphere::ShadePixel(ray _ray, glm::vec3 Intersectpoint)
     glm::vec3 diffuse = diff * lightcol;
 
     //calculating ambient and specular
-    float ambientLightStrength = 0.5f;
+    float ambientLightStrength = 0.2f;
     glm::vec3 ambient = ambientLightStrength * lightcol;
     glm::vec3 viewdir = -glm::normalize(Intersectpoint);
     glm::vec3 reflectdir = glm::normalize(glm::reflect(-lightdir, Spherenormal));
