@@ -11,6 +11,8 @@
 
 int main(int argc, char* argv[])
 {
+
+
 	// Variable for storing window dimensions
 	glm::ivec2 windowSize(640, 480);
 
@@ -46,7 +48,13 @@ int main(int argc, char* argv[])
 	Raytracer tracer;
 
 	//Number of threads to use for ray tracing
-	const int numThreads = 6;
+	std::cout << "And please enter the amount of threads you would like to use" << std::endl;
+	int noofthreads;
+	std::cin >> noofthreads;
+
+	//std::cout << "Enter the amount of Spheres you would like to spawn" << std::endl;
+	//int spherequantity = Raytracer::spawnamount;
+	//std::cin >> Raytracer::spawnamount;
 
 	//initialize mutex
 	std::mutex mtx;
@@ -55,12 +63,12 @@ int main(int argc, char* argv[])
 	std::vector<std::thread> threads;
 
 	//main loop for the raytracer, checks every pixel
-	for (int i = 0; i < numThreads; i++)
+	std::chrono::steady_clock::time_point time1 = std::chrono::high_resolution_clock::now();
+	for (int i = 0; i < noofthreads; i++)
 	{
-
-		threads.push_back(std::thread([&tracer, &cam, &mtx]()
+		threads.push_back(std::thread([&tracer, &cam, &mtx, i, noofthreads]()
 			{
-				for (int y = 0; y < MCG::getwinsize().y; y++)
+				for (int y = i * (MCG::getwinsize().y / noofthreads); y < (i + 1)* (MCG::getwinsize().y / noofthreads); y++)
 				{
 					for (int x = 0; x < MCG::getwinsize().x; x++)
 					{
@@ -77,8 +85,14 @@ int main(int argc, char* argv[])
 	}
 
 	//Joining threads
-	for (int i = 0; i < numThreads; i++)
+	for (int i = 0; i < noofthreads; i++)
+	{
 		threads[i].join();
+	}
+
+	std::chrono::steady_clock::time_point time2 = std::chrono::high_resolution_clock::now();
+	std::chrono::milliseconds milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(time2 - time1);
+	std::cout << "Time taken: " << milliseconds.count() << std::endl;
 
 	std::cout << " Finished tracing" << std::endl;
 

@@ -27,6 +27,7 @@ public:
 	//light position and colour values
 	glm::vec3 LightPosition = glm::vec3(25.0f, -20.0f, 15.0f);
 	glm::vec3 lightcol = glm::vec3(0.8, 0.4, 0.5);
+	Material material;
 
 	//all functions are here
 	sphere();
@@ -42,7 +43,7 @@ public:
 
 protected:
 	//other values that dont need to be public are here
-	Material material;
+
 	float radius;
 	glm::vec3 sphereCenter;
 };

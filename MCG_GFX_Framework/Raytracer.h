@@ -10,6 +10,10 @@ public:
 	//creates functions
 	Raytracer();
 	glm::vec3 returncol(ray _ray);
+	int xaxis = 0;
+	int yaxis = 0;
+	std::vector<sphere> Objects;
+	int spawnamount;
 
 protected:
 	//object of the sphere
