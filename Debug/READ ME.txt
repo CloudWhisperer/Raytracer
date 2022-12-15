@@ -1,0 +1,3 @@
+This isnt working because its using the 64bit sdl2 which is bugged
+
+to test it in the .exe use the release version

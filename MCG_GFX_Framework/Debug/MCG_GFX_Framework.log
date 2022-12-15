@@ -1,2 +1,45 @@
 ﻿  Camera.cpp
-  MCG_GFX_Framework.vcxproj -> D:\Raytracer\Debug\MCG_GFX_Framework.exe
+  Main.cpp
+C:\Users\User\Downloads\Raytracerassignment2022\Raytracer\MCG_GFX_Framework\Main.cpp(41,66): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\Downloads\Raytracerassignment2022\Raytracer\MCG_GFX_Framework\Main.cpp(70,16): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  MCG_GFX_Lib.cpp
+C:\Users\User\Downloads\Raytracerassignment2022\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(88,63): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\Raytracerassignment2022\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(88,53): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\Raytracerassignment2022\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(88,43): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\Raytracerassignment2022\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(98,63): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\Raytracerassignment2022\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(98,53): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Downloads\Raytracerassignment2022\Raytracer\MCG_GFX_Framework\MCG_GFX_Lib.cpp(98,43): warning C4244: 'argument': conversion from 'T' to 'Uint8', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Raytracer.cpp
+C:\Users\User\Downloads\Raytracerassignment2022\Raytracer\MCG_GFX_Framework\Raytracer.cpp(47,27): warning C4018: '<': signed/unsigned mismatch
+  sphere.cpp
+C:\Users\User\Downloads\Raytracerassignment2022\Raytracer\MCG_GFX_Framework\sphere.cpp(89,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  MCG_GFX_Framework.vcxproj -> C:\Users\User\Downloads\Raytracerassignment2022\Raytracer\Debug\MCG_GFX_Framework.exe
