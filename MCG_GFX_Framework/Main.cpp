@@ -65,6 +65,7 @@ int main(int argc, char* argv[])
 	//so all the threads can work on the raytracer at the same time
 	for (int i = 0; i < noofthreads; i++)
 	{
+		//Learn how to add paremters in brackets using this website https://www.geeksforgeeks.org/multithreading-in-cpp/
 		threads.push_back(std::thread([&tracer, &cam, &mtx, i, noofthreads]()
 			{
 				for (int y = i * (MCG::getwinsize().y / noofthreads); y < (i + 1)* (MCG::getwinsize().y / noofthreads); y++)
@@ -92,6 +93,7 @@ int main(int argc, char* argv[])
 		threads[i].join();
 	}
 
+	//learnt chrono clock using https://en.cppreference.com/w/cpp/chrono
 	//stops the timer and record how long it too
 	std::chrono::steady_clock::time_point time2 = std::chrono::high_resolution_clock::now();
 	std::chrono::milliseconds milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(time2 - time1);
