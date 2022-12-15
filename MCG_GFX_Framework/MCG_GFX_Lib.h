@@ -33,12 +33,10 @@ namespace MCG
 	/// For cleanly shutting down the graphics system
 	void Cleanup();
 
+	//function for getting the window size
 	glm::vec2 getwinsize();
 
 };
-
-
-
 
 #endif
 

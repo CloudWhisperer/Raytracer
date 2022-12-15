@@ -1,3 +1,4 @@
+//directories to include
 #pragma once
 #include"Ray.h"
 #include "MCG_GFX_Lib.h"

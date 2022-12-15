@@ -1,3 +1,4 @@
+//include directories go here
 #include <iostream>
 #include <cmath>
 #include <SDL/SDL.h>
@@ -9,10 +10,9 @@
 #include "Raytracer.h"
 #include "sphere.h"
 
+//main function
 int main(int argc, char* argv[])
 {
-
-
 	// Variable for storing window dimensions
 	glm::ivec2 windowSize(640, 480);
 
@@ -35,13 +35,7 @@ int main(int argc, char* argv[])
 	// Colours are RGB, each value ranges between 0 and 1
 	glm::vec3 pixelColour(1, 0, 0);
 
-
-	// Draws a single pixel at the specified coordinates in the specified colour!
-	//MCG::DrawPixel( pixelPosition, pixelColour );
-
-	// Do any other DrawPixel calls here
-	// ...
-
+	//creates a camera,material,object, and raytracer to use in the main loop
 	camera cam;
 	Material spheremat;
 	sphere inviscircle = sphere(0.001, glm::vec3(0, 0, 0), spheremat);
@@ -49,21 +43,26 @@ int main(int argc, char* argv[])
 
 	//Number of threads to use for ray tracing
 	std::cout << "And please enter the amount of threads you would like to use" << std::endl;
+
+	//this value is the amount of threads that will be used
 	int noofthreads;
+
+	//cin is where the user inputs a number
 	std::cin >> noofthreads;
 
-	//std::cout << "Enter the amount of Spheres you would like to spawn" << std::endl;
-	//int spherequantity = Raytracer::spawnamount;
-	//std::cin >> Raytracer::spawnamount;
-
 	//initialize mutex
+	//mutex is for making sure the threads dont locke each other out
 	std::mutex mtx;
 
 	//vector of threads 
 	std::vector<std::thread> threads;
 
 	//main loop for the raytracer, checks every pixel
+	//clock is used to calculate how long it took the program to load, measured in milliseconds
 	std::chrono::steady_clock::time_point time1 = std::chrono::high_resolution_clock::now();
+
+	//main loop, first does the whole loop based on the number of threads then generates the loop into split sections
+	//so all the threads can work on the raytracer at the same time
 	for (int i = 0; i < noofthreads; i++)
 	{
 		threads.push_back(std::thread([&tracer, &cam, &mtx, i, noofthreads]()
@@ -72,11 +71,14 @@ int main(int argc, char* argv[])
 				{
 					for (int x = 0; x < MCG::getwinsize().x; x++)
 					{
-
+						//turns the ray we made into the camera ray
 						ray r = cam.camray(glm::vec2(x, y));
+						//locks the thread to prevent deadlock
 						mtx.lock();
 
+						//draws the pixel on the screen with the colour
 						MCG::DrawPixel(glm::vec2(x, y), tracer.returncol(r));
+						//unlocks the mutex to allow thread to start working
 						mtx.unlock();
 
 					}
@@ -90,38 +92,17 @@ int main(int argc, char* argv[])
 		threads[i].join();
 	}
 
+	//stops the timer and record how long it too
 	std::chrono::steady_clock::time_point time2 = std::chrono::high_resolution_clock::now();
 	std::chrono::milliseconds milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(time2 - time1);
 	std::cout << "Time taken: " << milliseconds.count() << std::endl;
 
+	//print to let user know tracer is finished
 	std::cout << " Finished tracing" << std::endl;
 
 	// Displays drawing to screen and holds until user closes window
-	// You must call this after all your drawing calls
+	// You must call this AFTER all your drawing calls
 	// Program will exit after this line
 	return MCG::ShowAndHold();
-
-
-	// Advanced access - comment out the above DrawPixel and MCG::ShowAndHold lines, then uncomment the following:
-	// Variable to keep track of time
-	//float timer = 0.0f;
-
-	// This is our game loop
-	// It will run until the user presses 'escape' or closes the window
-	//while (MCG::ProcessFrame())
-	//{
-
-	//}
-
-	//// Set every pixel to the same colour
-	//MCG::SetBackground(glm::vec3(0, 0, 0));
-
-	//// Change our pixel's X coordinate according to time
-	//pixelPosition.x = (windowSize.x / 2) + (int)(sin(timer) * 100.0f);
-	//// Update our time variable
-	//timer += 1.0f / 60.0f;
-
-	//// Draw the pixel to the screen
-	//MCG::DrawPixel(pixelPosition, pixelColour);
 
 }

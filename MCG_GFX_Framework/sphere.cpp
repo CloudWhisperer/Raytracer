@@ -51,19 +51,22 @@ IntersectionResult sphere::IntersectTest(ray _ray)
     //final intersect point calculation
     glm::vec3 Intersect_Point = _ray.origin + (glm::dot((sphereCenter - _ray.origin), _ray.dir) - intersectx) * _ray.dir;
     
-    // main intersection test
+    //main intersection test
+    //if the ray is less than the radius of the sphere that means it hit so set hit to true
     if (d <= radius)
     {
         testResult.Intersectpoint = Intersect_Point;
         testResult.hitsphere = true;
     }
 
+    //returns the result of the ray
     return testResult;
 }
 
 //shading and surface normal process
 glm::vec3 sphere::ShadePixel(ray _ray, glm::vec3 Intersectpoint)
 {
+    //creates a material
     Material mat(glm::vec3(0.5), 3.5f);
 
     //calling the function sphere normal and creating a vec3 from it
@@ -78,7 +81,7 @@ glm::vec3 sphere::ShadePixel(ray _ray, glm::vec3 Intersectpoint)
     //makes the colour of circle
     glm::vec3 diffuse = diff * lightcol;
 
-    //calculating ambient and specular
+    //calculating ambient and specular to use in the final result
     float ambientLightStrength = 0.2f;
     glm::vec3 ambient = ambientLightStrength * lightcol;
     glm::vec3 viewdir = -glm::normalize(Intersectpoint);
@@ -86,14 +89,14 @@ glm::vec3 sphere::ShadePixel(ray _ray, glm::vec3 Intersectpoint)
     float spec = pow(glm::max(glm::dot(viewdir, reflectdir), 0.0f), 64);
     glm::vec3 specular = spec * mat.specularStrength * lightcol;
 
-    //add all the shadings together
+    //add all the shadings together to produce the specular lighting
     glm::vec3 result = (ambient + diffuse + specular)* mat.diffuseColour;
 
     //returning the final result
     return result;
 }
 
-//calculating the sphere normal
+//calculating the sphere normal using the equation
 glm::vec3 sphere::spherenormal(glm::vec3 sphereCenter, glm::vec3 threedeesamplepoint)
 {
     glm::vec3 normalvector = threedeesamplepoint - sphereCenter;
